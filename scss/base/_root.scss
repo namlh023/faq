@@ -1,0 +1,46 @@
+:root {
+  --clr-text: hsl(238, 29%, 16%);
+  --clr-text-2: hsl(237, 12%, 33%);
+  --clr-text-3: hsl(240, 6%, 50%);
+  --clr-text-active: hsl(14, 88%, 65%);
+  --clr-background-violet: hsl(273, 75%, 66%);
+  --clr-background-blue: hsl(240, 73%, 65%);
+  --clr-background-white: hsl(0, 0%, 100%);
+  --clr-divider: hsl(240, 5%, 91%);
+
+  --ff-primary: "Kumbh Sans", sans-serif;
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --fs-heading: 2rem;
+  --lh-heading: 1em;
+
+  --fs-text: 0.8125rem;
+  --lh-text: 1em;
+
+  --fs-text-2: 0.75rem;
+  --lh-text-2: 1.5em;
+
+  --space-xss: 0.75rem;
+  --space-xs: 1.5rem;
+  --space-md: 5rem;
+  --space-lg: 10rem;
+  --space-heading: 2.5rem;
+  --space-question: 1rem;
+
+  --image-width-mobile: 17.4375rem;
+  --image-height-mobile: 13.1875rem;
+
+  --image-width-desktop: 29.26rem;
+  --image-height-desktop: 22.375rem;
+
+  --image-width-box: 11.9375rem;
+  --image-height-box: 11.5rem;
+
+  @media (min-width: 75em) {
+    --fs-text: 0.875rem;
+
+    --space-xs: 5.9375rem;
+  }
+}
