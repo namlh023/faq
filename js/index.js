@@ -4,17 +4,13 @@ const show_answer = "card__answer--show";
 const show_question = "card__question--show";
 
 questions.forEach((question) => {
-  question.addEventListener("click", () => {
-    const answer = question.nextElementSibling;
-    if (answer.classList.contains(show_answer)) {
-      question.classList.remove(show_question);
-      answer.classList.remove(show_answer);
-    } else {
-      answers.forEach((answer) => {
-        answer.classList.remove(show_answer);
-      });
-      question.classList.add(show_question);
-      answer.classList.add(show_answer);
+  question.addEventListener("click", (event) => {
+    const question_active = document.querySelector(".card__question--show");
+    if (question_active && question_active !== question) {
+      question_active.classList.remove(show_question);
+      question_active.nextElementSibling.classList.remove(show_answer);
     }
+    question.classList.toggle(show_question);
+    question.nextElementSibling.classList.toggle(show_answer);
   });
 });
