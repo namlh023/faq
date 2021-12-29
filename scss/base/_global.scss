@@ -1,0 +1,213 @@
+@use "./reset";
+@use "./font";
+@use "./root";
+
+/*---------------------
+        LAYOUT
+-----------------------*/
+
+body {
+  font-size: 1rem;
+  font-family: var(--ff-primary);
+
+  background: linear-gradient(
+    180deg,
+    var(--clr-background-violet),
+    var(--clr-background-blue)
+  );
+
+  padding: var(--space-md) var(--space-xs);
+}
+
+.container {
+  padding: 0 var(--space-xs) var(--space-md);
+  margin: var(--space-md) auto;
+}
+
+/*---------------------
+        COMMON
+-----------------------*/
+
+@mixin iconArrow {
+  content: "";
+  background-image: url("../images/icon-arrow-down.svg");
+  background-size: 100%;
+  width: 0.625rem;
+  height: 0.4375rem;
+}
+
+.h1-like {
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-700);
+  line-height: var(--lh-heading);
+  color: var(--clr-text);
+  text-align: center;
+
+  margin-bottom: var(--space-heading);
+
+  @media (min-width: 75em) {
+    text-align: left;
+  }
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+/*---------------------
+        COMPONENTS
+-----------------------*/
+
+.card {
+  background-color: var(--clr-background-white);
+  border-radius: 1.5rem;
+  max-width: 20.5rem;
+
+  background-image: url("../images/bg-pattern-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top -1.5rem center;
+
+  position: relative;
+
+  &__header {
+    position: relative;
+    min-height: var(--space-lg);
+  }
+
+  &__image-desktop,
+  &__image-box {
+    display: none;
+  }
+
+  &__image-mobile {
+    width: var(--image-width-mobile);
+    height: var(--image-height-mobile);
+
+    position: absolute;
+    top: calc(var(--image-height-mobile) / -1.65);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__question {
+    font-size: var(--fs-text);
+    font-weight: var(--fw-400);
+    line-height: var(--lh-text);
+    color: var(--clr-text-2);
+
+    margin-top: var(--space-question);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    width: 100%;
+
+    &:hover {
+      color: var(--clr-text-active);
+    }
+
+    &:after {
+      @include iconArrow();
+    }
+
+    &--show {
+      color: var(--clr-text);
+      font-weight: var(--fw-700);
+
+      &:after {
+        @include iconArrow();
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__answer {
+    font-size: var(--fs-text-2);
+    font-weight: var(--fw-400);
+    line-height: var(--lh-text-2);
+    color: var(--clr-text-3);
+
+    margin-bottom: var(--space-question);
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out, margin-top 0.2s ease-out;
+
+    &--show {
+      max-height: 3rem;
+      margin-top: var(--space-question);
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 0.0625rem;
+    background-color: var(--clr-divider);
+  }
+}
+
+/*---------------------
+    MEDIA QUERY
+-----------------------*/
+
+@media (min-width: 75em) {
+  .container {
+    padding-top: var(--space-md);
+    padding-left: 0;
+  }
+  .card {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    max-width: 57.5rem;
+
+    &__header {
+      overflow: hidden;
+      min-height: var(--image-height-desktop);
+    }
+
+    &__header,
+    &__body {
+      flex: 1 1 50%;
+    }
+
+    &__image-mobile {
+      display: none;
+    }
+
+    &__image-desktop,
+    &__image-box {
+      display: inline-block;
+      position: absolute;
+    }
+
+    &__image-desktop {
+      width: var(--image-width-desktop);
+      height: var(--image-height-desktop);
+      left: -5rem;
+      top: 0;
+      transform: rotate(3deg);
+    }
+
+    &__image-box {
+      position: absolute;
+      width: var(--image-width-box);
+      height: var(--image-height-box);
+      left: -6rem;
+      transform: translateY(80%);
+      z-index: 2;
+    }
+
+    background-image: url("../images/bg-pattern-desktop.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left -38rem top -16rem;
+  }
+}
